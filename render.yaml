@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: n8n
+    env: docker
+    rootDirectory: ./
+    dockerfilePath: ./Dockerfile
+    ports:
+      - port: 5678
+    envVars:
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: "true"
+      - key: N8N_BASIC_AUTH_USER
+        value: admin
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: admin
+      - key: N8N_HOST
+        value: $RENDER_SERVICE_NAME.onrender.com
+      - key: N8N_PROTOCOL
+        value: https
+      - key: N8N_EDITOR_UI_URL
+        value: https://$RENDER_SERVICE_NAME.onrender.com
